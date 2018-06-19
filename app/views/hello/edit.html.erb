@@ -1,0 +1,23 @@
+<div class="teste">
+<%= form_for(@site, url:{controller:"hello", action:"update"}) do |f| %>
+
+  <%=f.label :nome%>
+  <%=f.text_field :nome, class:'form-control'%>
+
+  <%=f.label :url%>
+  <%=f.text_field :url, class:'form-control'%>
+
+  <%= f.select("servidor_id") do %>
+    <% Servidor.all.each do |s| %>
+      <%if  s.id == @site.servidor_id%>
+        <%= content_tag(:option,s.nome,value:s.id, selected:"selected")%>
+      <%else%>
+       <%= content_tag(:option,s.nome,value:s.id)%>
+      <%end%>
+    <%end%>
+  <%end%>
+
+  <%= f.submit "Editar site", class: "btn btn-primary" %>
+<%end%>
+  <br><%= button_to "Voltar atrás", backoffice_path ,method: :get%>
+</div>

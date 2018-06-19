@@ -1,0 +1,19 @@
+<div class="teste">
+<%= form_for(@site, url:{controller:"hello", action:"create"}) do |f| %>
+
+  <%=f.label :nome%>
+  <%=f.text_field :nome, class:'form-control'%>
+
+  <%=f.label :url%>
+  <%=f.text_field :url, class:'form-control'%>
+
+  <%= f.select("servidor_id") do %>
+    <% Servidor.all.each do |s| %>
+      <%= content_tag(:option,s.nome,value:s.id)%>
+    <%end%>
+  <%end%>
+
+  <%= f.submit "Adicionar site", class: "btn btn-primary" %>
+<%end%>
+  <br><%= button_to "Voltar atrás", backoffice_path ,method: :get%>
+</div>

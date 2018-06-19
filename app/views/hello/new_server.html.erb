@@ -1,0 +1,14 @@
+<div class="teste">
+<%= form_for(@servidor, url:{controller:"hello", action:"create_server"}) do |f| %>
+
+  <div class="aviso">
+    Ao criar um servidor novo já deve ter configurado do lado do Node.JS , caso contrário não irá acontecer nada
+  </div>
+
+  <%=f.label :nome%>
+  <%=f.text_field :nome, class:'form-control'%>
+
+  <%= f.submit "Adicionar servidor", class: "btn btn-primary" %>
+<%end%>
+  <br><%= button_to "Voltar atrás", backoffice_path ,method: :get%>
+</div>

@@ -1,0 +1,87 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.teste {
+  width: 700px;
+  margin:auto;
+  border-radius: 10px;
+  background-color: lightgray;
+  padding:20px
+}
+
+.conteudo {
+  margin:auto;
+  width: 80%;
+  border: solid 2px black;
+  border-radius: 10px;
+  padding:10px;
+  margin-bottom:10px;
+}
+.aviso {
+  margin:auto;
+  width: 80%;
+  background-color: yellow;
+  border: solid 2px black;
+  border-radius: 10px;
+  padding:10px;
+  margin-bottom:20px;
+}
+.titulo {
+  display:block;
+  border-bottom: solid 2px blue;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.site {
+  position: relative;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: solid 2px gray;
+}
+.status {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: 100px;
+}
+.server {
+  margin-top: 0px;
+  margin-right: 5px;
+  width: 18px;
+  height:18px;
+}
+.head {
+  position: relative;
+}
+
+.up {
+  background-color: green;
+}
+.down  {
+  background-color:red;
+}
+.issues {
+  background-color: orange;
+}
+.imgsite {
+  vertical-align: middle;
+  height: 16px;
+  width: 16px;
+  padding-bottom: 5px;
+  margin-right: 2px;
+}

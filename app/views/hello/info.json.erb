@@ -1,0 +1,1 @@
+{"site": [<% @sites.each_with_index do |s, index| %><%if index!= @sites.size-1%>["<%=s.id%>","<%=s.url%>"],<%else%>["<%=s.id%>","<%=s.url%>"]<%end%><% end%>]}

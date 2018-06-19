@@ -1,0 +1,45 @@
+<div class="teste">
+  Teste controller: <%=@teste%><br>
+  <br>
+  <%Servidor.all.each do |s|%>
+    <div class="conteudo">
+      <div class="head">
+        <span class="titulo">
+          <%=s.nome.upcase%>
+          <%=link_to image_tag("destroy", class:"imgsite"), servidor_destroy_path(s.id), method: :delete, data: { confirm: "Tem a certeza que deseja apagar '#{s.nome}' ?" }%>
+        </span>
+        <% case s.up %>
+        <%when 0%>
+          <div class="status server issues" id="statusserver<%=s.id%>"></div>
+        <%when 1%>
+          <div class="status server down" id="statusserver<%=s.id%>"></div>
+        <%when 2%>
+          <div class="status server up" id="statusserver<%=s.id%>"></div>
+        <%else%>
+          <div>Erro. Contatar responsavel.</div>
+        <%end%>
+      </div>
+      <%Site.all.where(servidor_id:s.id).each do |si|%>
+        <div class="site">
+          <%=link_to image_tag("edit", class:"imgsite"), site_edit_path(si.id), method: :get  %>
+          <%=link_to image_tag("destroy", class:"imgsite"), site_destroy_path(si.id), method: :delete, data: { confirm: "Tem a certeza que deseja apagar '#{si.nome}' ?" }%>
+          <%=si.nome%> - <%=link_to si.url, si.url%>
+          <% case si.up %>
+          <%when 0%>
+            <div class="status issues" id="status<%=si.id%>"></div>
+          <%when 1%>
+            <div class="status down" id="status<%=si.id%>"></div>
+          <%when 2%>
+            <div class="status up" id="status<%=si.id%>"></div>
+          <%else%>
+            <div>Erro. Contatar responsavel.</div>
+          <%end%>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
+  <%=button_to "Adicionar site", site_new_path, method: :get%><br>
+  <%=button_to "Adicionar servidor", servidor_new_path, method: :get%><br>
+  <%=button_to "Parar job [debug]", stop_job_path, method: :post%>
+
+</div>
