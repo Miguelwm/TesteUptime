@@ -1,7 +1,7 @@
 # TesteUptime
 Um teste para verificar uptime de servidores.
 
-##Rails
+## Rails
 
 `bundle install`
 
@@ -15,7 +15,7 @@ rails s
 ```
 
 
-##Node.js
+## Node.js
 
 **editar dentro do hello.js**
 
