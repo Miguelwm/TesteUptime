@@ -7,5 +7,19 @@ App.notificacoes = App.cable.subscriptions.create "NotificacoesChannel",
 
   received: (data) ->
     # alert(data.content)
-    x = data.id.split("-")
-    $("#status"+y).removeClass().addClass("status "+data.action) for y in x
+
+    if data.action is "response"
+      x = data.id.split("-")
+      $("#status"+y).removeClass().addClass("status "+data.sub_action) for y in x
+      console.log(data.id+"\n\naction: "+data.action+"\nsub_action:"+data.sub_action)
+    if data.action is "response_server"
+      $("#statusserver"+data.id).removeClass().addClass("status server "+data.sub_action)
+      console.log(data.id+"\n\naction: "+data.action+"\nsub_action:"+data.sub_action)
+    if data.action is "uptime_site"
+      x = data.id.split("-")
+      $("#status"+y).removeClass().addClass("status "+data.sub_action) for y in x
+      console.log(data.id+"\n\naction: "+data.action+"\nsub_action:"+data.sub_action)
+    if data.action is "uptime_server"
+      x = data.id.split("-")
+      $("#statusserver"+y).removeClass().addClass("status server "+data.sub_action) for y in x
+      console.log(data.id+"\n\naction: "+data.action+"\nsub_action:"+data.sub_action)

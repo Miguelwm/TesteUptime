@@ -45,6 +45,7 @@ class HelloController < ApplicationController
     @job=JobManager.find(1)
     @job.iniciado=false
     @job.save
+    # Servidor.uptime
   end
 
   def new
@@ -98,24 +99,33 @@ class HelloController < ApplicationController
     x = params[:id].split("-")
     @servidor=Site.find(x.first).servidor
     @servidor.up=2
+    @servidor.contador=0
     @servidor.resposta=true
     @servidor.save
     x.each do |y|
       @site=Site.find(y)
       @site.up=1
       @site.resposta=true
+      @site.contador=0
       @site.save
     end
     ActionCable.server.broadcast 'notificacoes_channel',
                            content:"teste",
                            id:params[:id],
-                           action:"down"
+                           action:"response",
+                           sub_action:"down"
+    ActionCable.server.broadcast 'notificacoes_channel',
+                         content:"teste",
+                         id:@servidor.id,
+                         action:"response_server",
+                         sub_action:"up"
   end
 
   def ok
     x = params[:id].split("-")
     @servidor=Site.find(x.first).servidor
     @servidor.up=2
+    @servidor.contador=0
     @servidor.resposta=true
     @servidor.save
 
@@ -123,30 +133,45 @@ class HelloController < ApplicationController
       @site=Site.find(y)
       @site.up=2
       @site.resposta=true
+      @site.contador=0
       @site.save
     end
     ActionCable.server.broadcast 'notificacoes_channel',
                            content:"teste",
                            id:params[:id],
-                           action:"up"
+                           action:"response",
+                           sub_action:"up"
+    ActionCable.server.broadcast 'notificacoes_channel',
+                         content:"teste",
+                         id:@servidor.id,
+                         action:"response_server",
+                         sub_action:"up"
   end
 
   def na
     x = params[:id].split("-")
     @servidor=x.first.servidor
     @servidor.up=2
+    @servidor.contador=0
     @servidor.resposta=true
     @servidor.save
     x.each do |y|
       @site=Site.find(y)
       @site.up=0
       @site.resposta=true
+      @site.contador=0
       @site.save
     end
     ActionCable.server.broadcast 'notificacoes_channel',
                            content:"teste",
                            id:params[:id],
-                           action:"issues"
+                           action:"response",
+                           sub_action:"issues"
+   ActionCable.server.broadcast 'notificacoes_channel',
+                         content:"teste",
+                         id:@servidor.id,
+                         action:"response_server",
+                         sub_action:"up"
   end
 
   private
