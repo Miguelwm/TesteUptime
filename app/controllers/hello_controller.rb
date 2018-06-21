@@ -6,7 +6,7 @@ class HelloController < ApplicationController
     if !@job.iniciado
       @job.iniciado=true
       @job.save
-      Servidor.uptime
+      # Servidor.uptime
     end
   end
 
@@ -16,7 +16,7 @@ class HelloController < ApplicationController
     if !@job.iniciado
       @job.iniciado=true
       @job.save
-      Servidor.uptime
+      # Servidor.uptime
     end
   end
 

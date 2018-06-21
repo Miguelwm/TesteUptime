@@ -1,3 +1,6 @@
+require 'sidekiq-scheduler'
+
+
 class UptimeWorker
   include Sidekiq::Worker
 
@@ -98,9 +101,11 @@ end
     puts "fim do job"
     puts "**********************"
     if JobManager.find(1).iniciado
-      sleep 30
-      Servidor.uptime
+      # sleep 30
+      # Servidor.uptime
     end
 
   end
 end
+
+# Sidekiq::Cron::Job.create(name: 'Uptime Worker - Every minute', cron: '* * * * *', class: 'UptimeWorker')
